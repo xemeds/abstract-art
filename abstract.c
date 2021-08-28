@@ -9,11 +9,12 @@ int main() {
 
     for (int h = 0; h < HEIGHT; h++) {
         for (int w = 0; w < WIDTH; w++) {
-            image[h][w].Red = 255;
-            image[h][w].Green = 255;
-            image[h][w].Blue = 255;
+            color(WIDTH, HEIGHT, image, h, w, 255);
         }
     }
+
+    drawCircle(WIDTH, HEIGHT, image, 400, 400, 100);
+    // drawLine(WIDTH, HEIGHT, image, 400, 0, 400, 800);
 
     saveImage(WIDTH, HEIGHT, image, FILENAME);
 
