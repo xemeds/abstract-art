@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include "image.h"
 
-#define WIDTH 800
-#define HEIGHT 800
+#define WIDTH 1600
+#define HEIGHT 1600
 #define FILENAME "image.png"
 
 int main() {
@@ -20,10 +20,10 @@ int main() {
     srand((unsigned) time(&t));
     // (rand() % (upper - lower + 1)) + lower
 
-    for (int i = 0; i < (rand() % (51 - 10 + 1)) + 10; i++) {
-        int x = (rand() % (701 - 100 + 1)) + 100;
-        int y = (rand() % (701 - 100 + 1)) + 100;
-        int r = (rand() % (101 - 1 + 1)) + 1;
+    for (int i = 0; i < (rand() % (2001 - 1000 + 1)) + 1000; i++) {
+        int x = (rand() % (1501 - 100 + 1)) + 100;
+        int y = (rand() % (1501 - 100 + 1)) + 100;
+        int r = (rand() % (51 - 1 + 1)) + 1;
         drawCircle(WIDTH, HEIGHT, image, x, y, r, rand() % 256, rand() % 256, rand() % 256);
     }
 
