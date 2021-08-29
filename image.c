@@ -35,21 +35,10 @@ void drawLine(int width, int height, Pixel_t image[width][height], int x1, int y
 // Functions for circle-generation using Bresenham's algorithm
 // https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
 void colorCircle(int width, int height, Pixel_t image[width][height], int xc, int yc, int x, int y) {
-    // Outline
-    color(width, height, image, xc+x, yc+y, 0);
-    color(width, height, image, xc-x, yc+y, 0);
-    color(width, height, image, xc+x, yc-y, 0);
-    color(width, height, image, xc-x, yc-y, 0);
-    color(width, height, image, xc+y, yc+x, 0);
-    color(width, height, image, xc-y, yc+x, 0);
-    color(width, height, image, xc+y, yc-x, 0);
-    color(width, height, image, xc-y, yc-x, 0);
-
-    // Filling
-    drawLine(width, height, image, xc+x, yc+y, xc+x, yc-y);
-    drawLine(width, height, image, xc-x, yc+y, xc-x, yc-y);
-    drawLine(width, height, image, xc+y, yc+x, xc-y, yc+x);
-    drawLine(width, height, image, xc+y, yc-x, xc-y, yc-x);
+    drawLine(width, height, image, xc+x, yc+y+1, xc+x, yc-y);
+    drawLine(width, height, image, xc-x, yc+y+1, xc-x, yc-y);
+    drawLine(width, height, image, xc+y+1, yc+x, xc-y, yc+x);
+    drawLine(width, height, image, xc+y+1, yc-x, xc-y, yc-x);
 }
 
 void drawCircle(int width, int height, Pixel_t image[width][height], int xc, int yc, int r) {
