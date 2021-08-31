@@ -1,3 +1,5 @@
+// Author: Muhammed Ali Dilek (xemeds)
+
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
@@ -46,12 +48,8 @@ int main() {
     }
 
     Pixel_t image[WIDTH][HEIGHT];
-
-    for (int h = 0; h < HEIGHT; h++) {
-        for (int w = 0; w < WIDTH; w++) {
-            color(WIDTH, HEIGHT, image, h, w, bg_r, bg_g, bg_b);
-        }
-    }
+    
+    colorBackground(WIDTH, HEIGHT, image, bg_r, bg_g, bg_b);
 
     time_t t;
     srand((unsigned) time(&t));

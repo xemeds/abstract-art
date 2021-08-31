@@ -3,14 +3,23 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image/stb_image_write.h"
 
-// Sets the RGP value of the pixel at the given position on the image
-void color(int width, int height, Pixel_t image[width][height], int x, int y, int r, int g, int b) {
+// Sets the RGP values of the pixel at the given position on the image
+void colorPixel(int width, int height, Pixel_t image[width][height], int x, int y, int r, int g, int b) {
     image[x][y].Red = r;
     image[x][y].Green = g;
     image[x][y].Blue = b;
 }
 
-// A naive function to draw either vertical or horizontal lines
+// Colors the background of the image
+void colorBackground(int width, int height, Pixel_t image[width][height], int r, int g, int b) {
+    for (int h = 0; h < height; h++) {
+        for (int w = 0; w < width; w++) {
+            colorPixel(width, height, image, h, w, r, g, b);
+        }
+    }
+}
+
+// Draws either a vertical or horizontal line
 void drawLine(int width, int height, Pixel_t image[width][height], int x1, int y1, int x2, int y2, int r, int g, int b) {
     // Vertical
     if (x1 - x2 == 0 && y1 - y2 != 0) {
@@ -18,7 +27,7 @@ void drawLine(int width, int height, Pixel_t image[width][height], int x1, int y
         int max_y = MAX(y1, y2);
 
         for (int y = min_y; y < max_y; y++) {
-            color(width, height, image, x1, y, r, g, b);
+            colorPixel(width, height, image, x1, y, r, g, b);
         }
     }
     // Horizontal
@@ -27,7 +36,7 @@ void drawLine(int width, int height, Pixel_t image[width][height], int x1, int y
         int max_x = MAX(x1, x2);
 
         for (int x = min_x; x < max_x; x++) {
-            color(width, height, image, x, y1, r, g, b);
+            colorPixel(width, height, image, x, y1, r, g, b);
         }
     }
 }
